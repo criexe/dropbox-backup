@@ -21,6 +21,6 @@ sudo chmod a+x /.criexe/dropbox-backup/actions/backup.sh
 # Install
 clear
 criexe-dropbox-backup create-dropbox-app
-create-dropbox
+criexe-dropbox
 
 echo "Done!";
