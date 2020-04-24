@@ -36,6 +36,12 @@ function install
     sudo chmod a+x /usr/local/bin/criexe-dropbox
 }
 
+# Upgrade
+function upgrade
+{
+    sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install.sh | sudo bash
+}
+
 if [ -z $1 ]; then
     echo "Criexe - Auto Backup to Dropbox";
 else
@@ -48,6 +54,11 @@ else
     # Install
     if [ $1 == "install" ]; then
         install
+    fi
+
+    # Upgrade
+    if [ $1 == "upgrade" ]; then
+        upgrade
     fi
 
     # Show Creating Dropbox App Guide

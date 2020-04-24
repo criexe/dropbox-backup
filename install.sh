@@ -5,10 +5,11 @@
 
 # Create Folders
 sudo mkdir -p /.criexe/dropbox-backup
-sudo mkdir -p /.criexe/dropbox-backup/actions
-sudo mkdir -p /.criexe/dropbox-backup/backup
+sudo mkdir -p /.criexe/dropbox-backup/actions/
+sudo mkdir -p /.criexe/dropbox-backup/backup/
 
 # Download Backup Script
+[ -f /usr/local/bin/criexe-dropbox-backup ] && sudo rm /usr/local/bin/criexe-dropbox-backup;
 sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/main.sh -o /usr/local/bin/criexe-dropbox-backup && \
 sudo chmod a+x /usr/local/bin/criexe-dropbox-backup
 
