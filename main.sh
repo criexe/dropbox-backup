@@ -73,8 +73,7 @@ else
         sudo criexe-dropbox-backup upload \
             /.criexe/dropbox-backup/backup/* \
             /$(date +"%Y-%m-%d")/
-
-        echo "Backup";
+            
     fi
 
 fi
