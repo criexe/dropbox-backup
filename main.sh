@@ -47,7 +47,7 @@ function upgrade
 # Edit Config
 function edit_config
 {
-    sudo vi /.criexe/dropbox-backup/actions/backup.sh
+    sudo vi /~/.criexe/dropbox-backup/actions/backup.sh
 }
 
 if [ -z $1 ]; then
@@ -87,16 +87,16 @@ else
         [ "$OSTYPE" == "darwin"* ] && sudo osascript -e 'display notification "Completed!" with title "Criexe - Dropbox Backup"'
 
         # Clear backup folder
-        [ -d /.criexe/dropbox-backup/backup/ ] && sudo rm -R /.criexe/dropbox-backup/backup/
-        sudo mkdir -p /.criexe/dropbox-backup/backup/
-        sudo chmod -R 777 /.criexe/dropbox-backup/backup/
+        [ -d /~/.criexe/dropbox-backup/backup/ ] && sudo rm -R /~/.criexe/dropbox-backup/backup/
+        sudo mkdir -p /~/.criexe/dropbox-backup/backup/
+        sudo chmod -R 777 /~/.criexe/dropbox-backup/backup/
 
         # Include backup action
-        . /.criexe/dropbox-backup/actions/backup.sh
+        . /~/.criexe/dropbox-backup/actions/backup.sh
 
         # Upload Files
         sudo criexe-dropbox upload \
-            /.criexe/dropbox-backup/backup/* \
+            /~/.criexe/dropbox-backup/backup/* \
             /Backups/$(date +"%Y-%m-%d")/
 
         # Done : MacOS
