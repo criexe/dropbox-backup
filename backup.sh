@@ -26,14 +26,14 @@ function creating_dropbox_app
 function install_dropbox_uploader
 {
     sudo curl -sSL "$UPLOADER_SOURCE_URL" -o /usr/local/bin/criexe-dropbox
-    chmod a+x /usr/local/bin/criexe-dropbox
+    sudo chmod a+x /usr/local/bin/criexe-dropbox
 }
 
 # Install
 function install
 {
     sudo curl "$UPLOADER_SOURCE_URL" -o /usr/local/bin/criexe-dropbox
-    chmod a+x /usr/local/bin/criexe-dropbox
+    sudo chmod a+x /usr/local/bin/criexe-dropbox
 }
 
 if [ -z $1 ]; then
@@ -47,17 +47,24 @@ else
 
     # Install
     if [ $1 == "install" ]; then
-        install_dropbox_uploader
-    fi
-
-    # Backup
-    if [ $1 == "backup" ]; then
-        echo "Backup";
+        install
     fi
 
     # Show Creating Dropbox App Guide
     if [ $1 == "create-dropbox-app" ]; then
         creating_dropbox_app
+    fi
+
+    # Config
+    if [ $1 == "config" ]; then
+        echo "Config";
+        sudo mkdir -p ~/.criexe/dropbox-backup
+        touch ~/.criexe/dropbox-backup/backup.config
+    fi
+
+    # Backup
+    if [ $1 == "backup" ]; then
+        echo "Backup";
     fi
 
 fi
