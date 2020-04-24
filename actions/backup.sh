@@ -16,7 +16,7 @@ sudo zip -9 -r \
     \
     -x '*/.git/*' \
     -x '*/node_modules/*' \
-    -x '*/.cache/*'
+    -x '*/.cache/*' \
     -x '*.DS_Store*'
 
 # MySQL
