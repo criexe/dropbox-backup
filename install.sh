@@ -18,4 +18,9 @@ sudo chmod a+x /usr/local/bin/criexe-dropbox-backup
 sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/actions/backup.sh -o /.criexe/dropbox-backup/actions/backup.sh && \
 sudo chmod a+x /.criexe/dropbox-backup/actions/backup.sh
 
+# Install
+clear
+criexe-dropbox-backup create-dropbox-app
+create-dropbox
+
 echo "Done!";

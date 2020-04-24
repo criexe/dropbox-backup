@@ -20,6 +20,8 @@ function creating_dropbox_app
     echo "6. Generate 'Access Token'";
     echo "7. Copy your 'Access Token'";
     echo "";
+    echo "-------------------------";
+    echo "";
 }
 
 # Install Dropbox Uploader
