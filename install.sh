@@ -20,6 +20,7 @@ sudo chmod a+x /.criexe/dropbox-backup/actions/backup.sh
 
 # Install
 clear
+criexe-dropbox-backup install-dropbox-uploader
 criexe-dropbox-backup create-dropbox-app
 criexe-dropbox
 
