@@ -11,6 +11,11 @@ curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install
 sudo su
 crontab -e
 
+# Daily
+SHELL=/bin/bash
+0 0 * * * criexe-dropbox-backup backup >/dev/null 2>&1
+
+# Weekly
 SHELL=/bin/bash
 * * */5 * * criexe-dropbox-backup backup >/dev/null 2>&1
 ```
