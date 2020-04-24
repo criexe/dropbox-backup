@@ -59,11 +59,21 @@ else
     if [ $1 == "config" ]; then
         echo "Config";
         sudo mkdir -p ~/.criexe/dropbox-backup
-        touch ~/.criexe/dropbox-backup/backup.config
+        sudo touch ~/.criexe/dropbox-backup/backup.config
     fi
 
     # Backup
     if [ $1 == "backup" ]; then
+
+        # Clear backup folder
+        sudo rm -R /.criexe/dropbox-backup/backup/*
+        sudo mkdir -p /.criexe/dropbox-backup/backup/
+
+        # Upload Files
+        sudo criexe-dropbox-backup upload \
+            /.criexe/dropbox-backup/backup/* \
+            /$(date +"%Y-%m-%d")/
+
         echo "Backup";
     fi
 
