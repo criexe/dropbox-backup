@@ -82,10 +82,6 @@ else
     # Backup
     if [ $1 == "backup" ]; then
 
-        # MacOS : Confirm
-        [ "$OSTYPE" == "darwin"* ] && sudo osascript -e 'tell app "System Events" to display dialog "Do you want to back up your computer?"'
-        [ "$OSTYPE" == "darwin"* ] && sudo osascript -e 'display notification "Completed!" with title "Criexe - Dropbox Backup"'
-
         # Clear backup folder
         [ -d /~/.criexe/dropbox-backup/backup/ ] && sudo rm -R /~/.criexe/dropbox-backup/backup/
         sudo mkdir -p /~/.criexe/dropbox-backup/backup/
@@ -98,9 +94,6 @@ else
         sudo criexe-dropbox upload \
             /~/.criexe/dropbox-backup/backup/* \
             /Backups/$(date +"%Y-%m-%d")/
-
-        # Done : MacOS
-        [ "$OSTYPE" == "darwin"* ] && sudo osascript -e 'display notification "Completed!" with title "Criexe - Dropbox Backup"'
             
     fi
 
