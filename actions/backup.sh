@@ -6,8 +6,8 @@ sudo zip -9 -r \
     \
     /~/.criexe/dropbox-backup/backup/files.zip \
     \
-    /home/
-    /var/www/
+    /home/ \
+    /var/www/ \
     /etc/nginx/ \
     /etc/apache2/ \
     /root/.zshrc \
