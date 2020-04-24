@@ -83,7 +83,7 @@ else
         # Clear backup folder
         [ ! -d /.criexe/dropbox-backup/backup/ ] && sudo rm -R /.criexe/dropbox-backup/backup/
         sudo mkdir -p /.criexe/dropbox-backup/backup/
-        sudo chmod -R 755 /.criexe/dropbox-backup/backup/
+        sudo chmod -R 777 /.criexe/dropbox-backup/backup/
 
         # Include backup action
         . /.criexe/dropbox-backup/actions/backup.sh
