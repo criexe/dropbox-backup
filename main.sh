@@ -94,6 +94,9 @@ else
         sudo criexe-dropbox upload \
             /~/.criexe/dropbox-backup/backup/* \
             /Backups/$(date +"%Y-%m-%d")/
+
+        # Remove Files
+        rm -R /~/.criexe/dropbox-backup/backup/*
             
     fi
 
