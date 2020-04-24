@@ -44,6 +44,12 @@ function upgrade
     sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install.sh | sudo bash
 }
 
+# Edit Config
+function edit_config
+{
+    sudo vi /.criexe/dropbox-backup/actions/backup.sh
+}
+
 if [ -z $1 ]; then
     echo "Criexe - Auto Backup to Dropbox";
 else
@@ -70,9 +76,7 @@ else
 
     # Config
     if [ $1 == "config" ]; then
-        echo "Config";
-        sudo mkdir -p ~/.criexe/dropbox-backup
-        sudo touch ~/.criexe/dropbox-backup/backup.config
+        edit_config
     fi
 
     # Backup
