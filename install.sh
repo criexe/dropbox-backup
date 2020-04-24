@@ -7,3 +7,4 @@
 mkdir -p ~/.criexe
 mkdir -p ~/.criexe/dropbox-backup
 
+echo "Installing 'Criexe Backup for Dropbox'...";
