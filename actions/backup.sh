@@ -1,7 +1,7 @@
 # Action: Backup
 # --------------
 
-ZIP: Files
+# ZIP: Files
 sudo zip -9 -r \
     \
     /~/.criexe/dropbox-backup/backup/files.zip \
