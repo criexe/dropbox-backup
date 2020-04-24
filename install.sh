@@ -4,9 +4,10 @@
 # Latest Update : April 24, 2020
 
 # Create Folders
-sudo mkdir -p /.criexe/dropbox-backup
+sudo mkdir -p /.criexe/dropbox-backup 
 sudo mkdir -p /.criexe/dropbox-backup/actions/
 sudo mkdir -p /.criexe/dropbox-backup/backup/
+chmod -R 777 /.criexe/dropbox-backup
 
 # Download Backup Script
 [ -f /usr/local/bin/criexe-dropbox-backup ] && sudo rm /usr/local/bin/criexe-dropbox-backup;
