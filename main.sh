@@ -66,11 +66,14 @@ else
     if [ $1 == "backup" ]; then
 
         # Clear backup folder
-        sudo rm -R /.criexe/dropbox-backup/backup/*
+        [ ! -d /.criexe/dropbox-backup/backup/ ] && sudo rm -R /.criexe/dropbox-backup/backup/
         sudo mkdir -p /.criexe/dropbox-backup/backup/
 
+        # Include backup action
+        . /.criexe/dropbox-backup/actions/backup.sh
+
         # Upload Files
-        sudo criexe-dropbox-backup upload \
+        sudo criexe-dropbox upload \
             /.criexe/dropbox-backup/backup/* \
             /$(date +"%Y-%m-%d")/
             
