@@ -81,7 +81,7 @@ else
         [ "$OSTYPE" == "darwin"* ] && sudo osascript -e 'display notification "Completed!" with title "Criexe - Dropbox Backup"'
 
         # Clear backup folder
-        [ ! -d /.criexe/dropbox-backup/backup/ ] && sudo rm -R /.criexe/dropbox-backup/backup/
+        [ -d /.criexe/dropbox-backup/backup/ ] && sudo rm -R /.criexe/dropbox-backup/backup/
         sudo mkdir -p /.criexe/dropbox-backup/backup/
         sudo chmod -R 777 /.criexe/dropbox-backup/backup/
 
