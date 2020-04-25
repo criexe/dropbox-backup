@@ -28,5 +28,3 @@ criexe-dropbox-backup create-dropbox-app
 
 # Access Token
 [ ! -f ~/.criexe/.dropbox ] && echo -ne " # Access token: "
-
-echo "Done!";
