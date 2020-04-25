@@ -65,6 +65,15 @@ function edit_config
     sudo vi ~/.criexe/dropbox-backup/actions/backup.sh
 }
 
+# Reset Config
+function reset_config
+{
+    # Action: Backup
+    [ -f ~/.criexe/dropbox-backup/actions/backup.sh ] rm ~/.criexe/dropbox-backup/actions/backup.sh
+    sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/actions/backup.sh -o ~/.criexe/dropbox-backup/actions/backup.sh && \
+    sudo chmod a+x ~/.criexe/dropbox-backup/actions/backup.sh
+}
+
 # Backup
 function backup
 {
@@ -109,6 +118,11 @@ else
         edit_config
     fi
 
+    # Reset Config
+    if [ $1 == "reset-config" ]; then
+        reset_config
+    fi
+
     # Backup
     if [ $1 == "backup" ]; then
         backup
@@ -116,8 +130,8 @@ else
 
     # Cron
     if [ $1 == "cron" ]; then
-        backup
         upgrade
+        backup
     fi
 
 fi
