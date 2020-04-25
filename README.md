@@ -11,6 +11,11 @@ curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install
 criexe-dropbox-backup upgrade
 ```
 
+### Reset Settings & Upgrade
+```bash
+criexe-dropbox-backup reset-config && criexe-dropbox-backup upgrade
+```
+
 ## Cron
 ```bash
 sudo su
