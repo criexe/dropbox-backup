@@ -27,27 +27,62 @@ function creating_dropbox_app
 # Install Dropbox Uploader
 function install_dropbox_uploader
 {
+    [ -f /usr/local/bin/criexe-dropbox ] && sudo rm /usr/local/bin/criexe-dropbox
     sudo curl -sSL "$UPLOADER_SOURCE_URL" -o /usr/local/bin/criexe-dropbox
-    sudo chmod a+x /usr/local/bin/criexe-dropbox
-}
-
-# Install
-function install
-{
-    sudo curl "$UPLOADER_SOURCE_URL" -o /usr/local/bin/criexe-dropbox
     sudo chmod a+x /usr/local/bin/criexe-dropbox
 }
 
 # Upgrade
 function upgrade
 {
-    sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install.sh | sudo bash
+    # Create Folders
+    sudo mkdir -p ~/.criexe/dropbox-backup 
+    sudo mkdir -p ~/.criexe/dropbox-backup/actions/
+    sudo mkdir -p ~/.criexe/dropbox-backup/backup/
+    chmod -R 777 ~/.criexe/dropbox-backup
+
+    # Download Backup Script
+    [ -f /usr/local/bin/criexe-dropbox-backup ] && sudo rm /usr/local/bin/criexe-dropbox-backup;
+    sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/main.sh -o /usr/local/bin/criexe-dropbox-backup && \
+    sudo chmod a+x /usr/local/bin/criexe-dropbox-backup
+
+    # Action: Backup
+    [ ! -f ~/.criexe/dropbox-backup/actions/backup.sh ] && \
+    sudo curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/actions/backup.sh -o ~/.criexe/dropbox-backup/actions/backup.sh && \
+    sudo chmod a+x ~/.criexe/dropbox-backup/actions/backup.sh
+
+    # Install
+    clear
+    criexe-dropbox-backup install-dropbox-uploader
+    criexe-dropbox-backup create-dropbox-app
+
+    echo "Done!";
 }
 
 # Edit Config
 function edit_config
 {
-    sudo vi /~/.criexe/dropbox-backup/actions/backup.sh
+    sudo vi ~/.criexe/dropbox-backup/actions/backup.sh
+}
+
+# Backup
+function backup
+{
+    # Clear backup folder
+    [ -d ~/.criexe/dropbox-backup/backup/ ] && sudo rm -R ~/.criexe/dropbox-backup/backup/
+    sudo mkdir -p ~/.criexe/dropbox-backup/backup/
+    sudo chmod -R 777 ~/.criexe/dropbox-backup/backup/
+
+    # Include backup action
+    . ~/.criexe/dropbox-backup/actions/backup.sh
+
+    # Upload Files
+    sudo criexe-dropbox upload \
+        ~/.criexe/dropbox-backup/backup/* \
+        /Backups/$(date +"%Y-%m-%d")/
+
+    # Remove Files
+    rm -R ~/.criexe/dropbox-backup/backup/*
 }
 
 if [ -z $1 ]; then
@@ -57,11 +92,6 @@ else
     # Install Dropbox Uploader
     if [ $1 == "install-dropbox-uploader" ]; then
         install_dropbox_uploader
-    fi
-
-    # Install
-    if [ $1 == "install" ]; then
-        install
     fi
 
     # Upgrade
@@ -81,23 +111,13 @@ else
 
     # Backup
     if [ $1 == "backup" ]; then
+        backup
+    fi
 
-        # Clear backup folder
-        [ -d /~/.criexe/dropbox-backup/backup/ ] && sudo rm -R /~/.criexe/dropbox-backup/backup/
-        sudo mkdir -p /~/.criexe/dropbox-backup/backup/
-        sudo chmod -R 777 /~/.criexe/dropbox-backup/backup/
-
-        # Include backup action
-        . /~/.criexe/dropbox-backup/actions/backup.sh
-
-        # Upload Files
-        sudo criexe-dropbox upload \
-            /~/.criexe/dropbox-backup/backup/* \
-            /Backups/$(date +"%Y-%m-%d")/
-
-        # Remove Files
-        rm -R /~/.criexe/dropbox-backup/backup/*
-            
+    # Cron
+    if [ $1 == "cron" ]; then
+        backup
+        upgrade
     fi
 
 fi

@@ -4,7 +4,7 @@
 # ZIP: Files
 sudo zip -9 -r \
     \
-    /~/.criexe/dropbox-backup/backup/files.zip \
+    ~/.criexe/dropbox-backup/backup/files.zip \
     \
     /home/ \
     /var/www/ \
@@ -20,4 +20,4 @@ sudo zip -9 -r \
     -x '*.DS_Store*'
 
 # MySQL
-sudo mysqldump -uroot --all-databases > /~/.criexe/dropbox-backup/backup/mysql.sql
+sudo mysqldump -uroot --all-databases > ~/.criexe/dropbox-backup/backup/mysql.sql

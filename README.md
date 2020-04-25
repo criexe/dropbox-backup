@@ -13,9 +13,9 @@ crontab -e
 
 # Daily
 SHELL=/bin/bash
-0 0 * * * criexe-dropbox-backup backup >/dev/null 2>&1
+0 0 * * * /usr/local/bin/criexe-dropbox-backup cron >/dev/null 2>&1
 
 # Weekly
 SHELL=/bin/bash
-* * */5 * * criexe-dropbox-backup backup >/dev/null 2>&1
+* * */5 * * /usr/local/bin/criexe-dropbox-backup cron >/dev/null 2>&1
 ```
