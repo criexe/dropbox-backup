@@ -3,7 +3,7 @@
 ## Install
 ```bash
 sudo su
-curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/criexe/dropbox-backup/master/install.sh | sudo bash && [ ! -f ~/.criexe/.dropbox ] && read -r CRIEXE_OAUTH_ACCESS_TOKEN && echo "OAUTH_ACCESS_TOKEN=$CRIEXE_OAUTH_ACCESS_TOKEN" > ~/.criexe/.dropbox
 ```
 
 ## Upgrade

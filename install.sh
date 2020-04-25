@@ -27,11 +27,6 @@ criexe-dropbox-backup install-dropbox-uploader
 criexe-dropbox-backup create-dropbox-app
 
 # Access Token
-if [[ ! -e $CONFIG_FILE ]]; then
-    echo -ne " # Access token: "
-    read -r OAUTH_ACCESS_TOKEN </dev/tty
-
-    echo "OAUTH_ACCESS_TOKEN=$OAUTH_ACCESS_TOKEN" > "$CONFIG_FILE"
-fi
+[ ! -f ~/.criexe/.dropbox ] && echo -ne " # Access token: "
 
 echo "Done!";
